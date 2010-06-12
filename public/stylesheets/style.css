@@ -1,0 +1,88 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	width: 100%;
+}
+
+div{
+	position: relative;
+}
+
+.inline{
+	display: inline-block;
+	vertical-align: top;
+}
+
+img.middle{
+	vertical-align: bottom;
+}
+/* HEAD */
+#head{
+	width: 100%;
+	height: 150px;
+	background: url(img/head_bg.gif) repeat-x;
+	background-size: 4px 150px;
+}
+
+#avatar #top{
+	background: #f00;
+	height: 90px;
+	width: 86px;
+	border: 2px solid;
+}
+
+#avatar #bottom{
+	text-align: center;
+	background: url(img/karma_bg.png) no-repeat;
+	background-size: 90px 20px;	
+}
+
+#avatar{
+	margin: 10px;
+}
+
+/*top_center*/
+
+#top_center{
+	text-shadow: 1px 1px 1px #000;
+	width: 60%;
+	min-width: 500px;
+	height: 120px;
+	margin: 10px;
+	color: #fff;
+}
+
+#fio{
+	text-align: center;
+	margin: 5px;
+}
+
+#marks{
+	font-size: small;
+	text-align: center;
+	margin: 5px;
+	margin-left: 20px;
+}
+
+
+/*top_center*/
+#logo{
+	vertical-align: middle; 
+	background: #ff0;
+}
+/* HEAD */
+
+#content{
+	width: 98%;
+	padding: 10px 1%;
+	background: #d9d9d9 url(img/ruby.png) bottom right no-repeat;
+}
+
+#footer{
+	width: 100%;
+	height: 50px;
+	background: #686868 url(img/footer_bg.gif);
+}

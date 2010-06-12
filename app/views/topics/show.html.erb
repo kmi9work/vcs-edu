@@ -1,0 +1,43 @@
+<p>
+  <b>User:</b>
+  <%=h @topic.user_id %>
+</p>
+
+<p>
+  <b>Voting:</b>
+  <%=h @topic.voting_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @topic.content %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%=h @topic.rating %>
+</p>
+
+<br>
+<p>
+	<%@comments.each do |comment|%>
+		<%=h comment.content%> | 
+		<%= link_to 'Edit', edit_comment_path(comment) %> | 
+		<%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %><br>
+	<%end%>
+	
+	<% form_for(@comment) do |f| %>
+	  <%= f.error_messages %>
+	  <p>
+	    <%= f.label :content %><br />
+	    <%= f.text_area :content %>
+	  </p>
+	  <p>
+	    <%= f.submit 'create comment' %>
+	  </p>
+	<% end %>
+	
+</p>
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

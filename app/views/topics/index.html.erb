@@ -1,0 +1,27 @@
+<h1>Listing topics</h1>
+
+<% @topics.each do |topic| %>
+		<h3><%=h topic.theme%></h3>
+    <%=h topic.content %>
+    <%= link_to 'Show', topic %>
+    <%= link_to 'Edit', edit_topic_path(topic) %>
+    <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
+<div class = "under_topic">
+	<% if topic.rating %>
+		Rating: 	
+		<% if topic.rating > 0 %>
+			<font color="green">
+		<% elsif topic.rating == 0 %>
+			<font color="gray">
+		<% else %>
+			<font color="red">
+		<% end %>
+		<%=h topic.rating %> </font>
+	<%end%>
+</div>
+<br>
+<% end %>
+
+<br />
+
+<%= link_to 'New topic', new_topic_path %>

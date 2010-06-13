@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
-  def index
-    @comments = Comment.all
+  def list
+    @comments = Comment.find_all_by_topic_id(params[:topic_ix])
+    p @comments
+    puts "============"
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @topics }
+      format.html # list.html.erb
+      format.xml  { render :xml => @comments }
     end
   end
 
@@ -24,10 +26,9 @@ class CommentsController < ApplicationController
   # GET /comments/new.xml
   def new
     @comment = Comment.new
-
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @topics }
+      format.xml  { render :xml => @comment }
     end
   end
 
@@ -39,14 +40,17 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
+    @topic = Topic.find(params[:topic_id])
     @comment = Comment.new(params[:comment])
-    @topic = @comment.topic
+    @topic.comments << @comment
     respond_to do |format|
       if @comment.save
         flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(@topic) }
+        format.html { redirect_to(:controller => :topics, :action => :show, :id => @topic.id) }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
+        @topic.comments.pop
+        flash[:notice] = 'Error.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
@@ -57,7 +61,7 @@ class CommentsController < ApplicationController
   # PUT /comments/1.xml
   def update
     @comment = Comment.find(params[:id])
-    @topics = @comments.topic
+    @topics = @comment.topic
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         flash[:notice] = 'Comment was successfully updated.'

@@ -1,43 +1,32 @@
 <p>
   <b>User:</b>
-  <%=h @topic.user_id %>
+  <%= h @topic.user_id %>
 </p>
 
+<%if @topic.voting_id%>
 <p>
   <b>Voting:</b>
-  <%=h @topic.voting_id %>
+  <%= h @topic.voting_id %>
 </p>
+<% end %>
 
 <p>
   <b>Content:</b>
-  <%=h @topic.content %>
+  <%= h @topic.content %>
 </p>
 
 <p>
   <b>Rating:</b>
-  <%=h @topic.rating %>
+  <%= h @topic.rating %>
 </p>
 
 <br>
+<hr>
 <p>
-	<%@comments.each do |comment|%>
-		<%=h comment.content%> | 
-		<%= link_to 'Edit', edit_comment_path(comment) %> | 
-		<%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %><br>
-	<%end%>
-	
-	<% form_for(@comment) do |f| %>
-	  <%= f.error_messages %>
-	  <p>
-	    <%= f.label :content %><br />
-	    <%= f.text_area :content %>
-	  </p>
-	  <p>
-	    <%= f.submit 'create comment' %>
-	  </p>
-	<% end %>
-	
+	<%= render :partial => 'comments' %>
+	<%= @topic.comments.size %>
+
 </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'New', :controller => :comments, :action => :new, :topic_id => @topic.id %> |
 <%= link_to 'Back', topics_path %>

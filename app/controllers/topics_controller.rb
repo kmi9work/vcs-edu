@@ -14,6 +14,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.xml
   def show
     @topic = Topic.find(params[:id])
+    p params
     @comments = Comment.find_by_topic_id(params[:id]) or @comments = []
     respond_to do |format|
       format.html # show.html.erb

@@ -7,6 +7,10 @@ body{
 	width: 100%;
 }
 
+a{
+	text-decoration: none;
+}
+
 div{
 	position: relative;
 }
@@ -29,15 +33,15 @@ img.middle{
 
 #avatar #top{
 	background: #f00;
-	height: 90px;
-	width: 86px;
+	height: 100px;
+	width: 100px;
 	border: 2px solid;
 }
 
 #avatar #bottom{
 	text-align: center;
 	background: url(img/karma_bg.png) no-repeat;
-	background-size: 90px 20px;	
+	background-size: 104px 20px;	
 }
 
 #avatar{
@@ -45,6 +49,7 @@ img.middle{
 }
 
 /*top_center*/
+
 
 #top_center{
 	text-shadow: 1px 1px 1px #000;
@@ -73,12 +78,34 @@ img.middle{
 	vertical-align: middle; 
 	background: #ff0;
 }
-/* HEAD */
+/* END HEAD */
 
 #content{
 	width: 98%;
 	padding: 10px 1%;
 	background: #d9d9d9 url(img/ruby.png) bottom right no-repeat;
+}
+.topic_title  a:visited, a:link{
+	color: #9c203e;
+
+}
+.topic_title {
+	color: #9c203e;
+	margin-left:50%;
+}
+.topic_title a:hover{
+	color: #e78080;
+}
+
+
+.topic{
+	width:100%;
+	border-top: 3px solid #999;
+	border-bottom: 3px solid #999;
+}
+
+#topic_content{
+	width:80%;
 }
 
 #footer{

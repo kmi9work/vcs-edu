@@ -8,8 +8,11 @@ body{
 }
 
 a{
-	text-decoration: none;
+  color:red;	
+  text-decoration: none;
 }
+
+
 
 div{
 	position: relative;
@@ -58,6 +61,11 @@ img.middle{
 	height: 120px;
 	margin: 10px;
 	color: #fff;
+}
+
+#student-bar-greeting a{
+  color:red;
+  font-size:14pt;
 }
 
 #fio{

@@ -1,2 +1,5 @@
 *.log
 tmp/
+tags
+config/database.yml
+script/

@@ -1,12 +1,13 @@
-<h3><%=h topic.theme%></h3>
+<div class='topic_title'>
+<h3><%= link_to topic.theme, topic %></h3>
+</div>
+<div class="topic">
 <%= textilize (h topic.content) %>
-<%= link_to 'Show', topic %>
-<%= link_to 'Edit', edit_topic_path(topic) %>
-<%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
+</div>
 <div class = "under_topic">
   Автор: <%= topic.student.login %> <font color="green">|</font>  
   <% if topic.rating %>
-    Rating: 	
+    Рейтинг: 	
     <% if topic.rating > 0 %>
       <font color="green">
     <% elsif topic.rating == 0 %>
@@ -16,6 +17,6 @@
     <% end %>
     <%=h topic.rating %> </font>
   <%end%>
-  
+  <div style="margin-right:8px;margin-top:-20px;text-align:right">  <%= link_to 'Подробнее  ', topic %> <%= link_to 'Править  ', edit_topic_path(topic) %> <%= link_to 'Удалить', topic, :confirm => 'Вы уверены?', :method => :delete %></div>
 </div>
 <br>

@@ -41,7 +41,7 @@ class TopicsController < ApplicationController
   # POST /topics.xml
   def create
     @topic = Topic.new(params[:topic])
-
+    @topic.student = @student
     respond_to do |format|
       @topic.rating = 0
       if @topic.save

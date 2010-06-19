@@ -4,6 +4,7 @@ class Student < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
+  
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -25,7 +26,9 @@ class Student < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :group, :last_name, :second_name, :karma, :rating
 
-
+  attr_accessor :mmarks
+  has_many :marks, :dependent => :delete_all
+  has_many :topics
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

@@ -1,0 +1,21 @@
+<h3><%=h topic.theme%></h3>
+<%= textilize (h topic.content) %>
+<%= link_to 'Show', topic %>
+<%= link_to 'Edit', edit_topic_path(topic) %>
+<%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
+<div class = "under_topic">
+  Автор: <%= topic.student.login %> <font color="green">|</font>  
+  <% if topic.rating %>
+    Rating: 	
+    <% if topic.rating > 0 %>
+      <font color="green">
+    <% elsif topic.rating == 0 %>
+      <font color="gray">
+    <% else %>
+      <font color="red">
+    <% end %>
+    <%=h topic.rating %> </font>
+  <%end%>
+  
+</div>
+<br>

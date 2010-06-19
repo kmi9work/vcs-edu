@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100306211738) do
+ActiveRecord::Schema.define(:version => 20100619113522) do
 
   create_table "comments", :force => true do |t|
     t.integer  "topic_id"
@@ -21,27 +21,42 @@ ActiveRecord::Schema.define(:version => 20100306211738) do
     t.datetime "updated_at"
   end
 
-  create_table "students", :force => true do |t|
-    t.integer  "group"
-    t.string   "photo"
-    t.integer  "rating"
-    t.string   "first_name"
-    t.string   "second_name"
-    t.string   "last_name"
-    t.integer  "karma"
+  create_table "marks", :force => true do |t|
+    t.string   "subject"
+    t.integer  "mark"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "students", :force => true do |t|
+    t.string   "login",                     :limit => 40
+    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "email",                     :limit => 100
+    t.string   "crypted_password",          :limit => 40
+    t.string   "salt",                      :limit => 40
+    t.string   "group",                     :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "photo"
+    t.integer  "rating",                                   :default => 0
+    t.string   "second_name",               :limit => 100
+    t.string   "last_name",                 :limit => 100
+    t.integer  "karma",                                    :default => 0
+  end
+
+  add_index "students", ["login"], :name => "index_students_on_login", :unique => true
 
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
     t.integer  "voting_id"
     t.text     "content"
     t.integer  "rating"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "theme"
     t.text     "annotation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "votings", :force => true do |t|

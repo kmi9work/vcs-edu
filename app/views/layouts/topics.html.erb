@@ -5,7 +5,6 @@
 	<meta name="Resource-type" content="Document">
 	<title>Topics: <%= controller.action_name %></title>
 	<%= stylesheet_link_tag 'style' %>
-	<%@student = Hash.new%>
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen">
 	<body>
 		<div id="head">
@@ -13,79 +12,37 @@
 				<div id="top">
 					<%= image_tag(@student[:image] ? @student[:image] : "noavatar.gif", :width => 100, :height => 100)%>
 				</div>
-				<div id="bottom">
-					23
+        <div id="bottom">
 					<%= image_tag("karma_ruby.png")%> <%= @student[:karma]%>
 				</div>
 			</div>
 			<div class="inline" id="top_center">
-				<div class="inline" id="fio">
-					<font color="red">kmi9<%= @student[:login]%></font><br>
-					Михаил Ильич<%= @student[:first_name]%> <%= @student[:second_name]%> <br>
-					Костенчук<%= @student[:last_name]%> <br>
-					Группа <%= @student[:group]%> <br>
-					Рейтинг <%= @student[:rating]%><br>
+        <div class="inline" id="fio">
+           <%= render :partial => 'students/student_bar' %>
 					<br>
 					<font color="blue">5<%= @student[:msg_count]%></font> Сообщений
 				</div>
 				<div class="inline" id="marks">
 					<table>
-						<tr>
-							<td>
-								Дифференциальные Уравнения
-							</td>
-							<td>
-								<%= @student[:rating]%>5
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Практикум по системному программированию
-							</td>
-							<td>
-								<%= @student[:rating]%>6
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Теория вероятностей и математическая статистика
-							</td>
-							<td>
-								<%= @student[:rating]%>3
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Базы данных и СУБД
-							</td>
-							<td>
-								<%= @student[:rating]%>2
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Системное и прикладное ПО
-							</td>
-							<td>
-								<%= @student[:rating]%>8
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Комплексный анализ
-							</td>
-							<td>
-								<%= @student[:rating]%>1
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Вычислительная математика
-							</td>
-							<td>
-								<%= @student[:rating]%>3
-							</td>
-						</tr>
+						<% @student.mmarks = {'Дифференциальные уравнения' => 5, 
+					    'Практикум по системному программированию' => 8,
+					    'Теория вероятностей и математическая статистика' => 10,
+					    'Базы данных и СУБД' => 100,
+					    'Системное и прикладное ПО' => 3,
+					    'Комплексный анализ' => 40,
+					    'Вычислительная математика' => 10
+					    }
+					  %>
+					  <% @student.mmarks.each do | subject, mark |%>
+					    <tr>
+  							<td>
+  								<%= h subject %>
+  							</td>
+  							<td>
+  								<%= h mark %>
+  							</td>
+  						</tr>
+					  <% end %>
 					</table>
 				</div>
 			</div>

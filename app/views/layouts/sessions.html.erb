@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-language" content="ru">
+	<meta name="Document-state" content="Dinamic">
+	<meta name="Resource-type" content="Document">
+	<title>VCS-EDU</title>
+	<%= stylesheet_link_tag 'style' %>
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+	<body>
+<div class="title_login">
+  <h1>Добро пожаловать!</h1>
+  
+  <% form_tag session_path do -%>
+  <br>
+  <p><%= label_tag 'login', 'Логин :' %>
+  <%= text_field_tag 'login', @login %></p>
+  <br>
+  <p><%= label_tag 'password', 'Пароль' %>
+  <%= password_field_tag 'password', nil %></p>
+  <br>
+  <!-- Uncomment this if you want this functionality
+  <p><%= label_tag 'remember_me', 'Remember me' %>
+  <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+  -->
+  
+  <p><%= submit_tag 'Войти' %></p>
+  <% end -%>
+</div>
+</body>

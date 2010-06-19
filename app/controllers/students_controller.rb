@@ -24,4 +24,9 @@ class StudentsController < ApplicationController
       render :action => 'new'
     end
   end
+  
+  def show
+    @student=Student.find_by_id(params[:id])
+  end
+  
 end

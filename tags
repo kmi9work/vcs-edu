@@ -1,4 +1,4 @@
-1276813924
+1276905808
 ACCESS_CONTROL_AM_I_LOGGED_IN	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/access_control_spec.rb	ACCESS_CONTROL_AM_I_LOGGED_IN =
 ACCESS_CONTROL_FORMATS	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/access_control_spec.rb	ACCESS_CONTROL_FORMATS =
 ACCESS_CONTROL_IS_LOGIN_REQD	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/access_control_spec.rb	ACCESS_CONTROL_IS_LOGIN_REQD =
@@ -309,6 +309,7 @@ set_remember_token	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authen
 setup	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/test/mailer_test.rb	  def setup
 setup_email	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/mailer.rb	    def setup_email
 show	/home/qaa12/web/vcs-edu/vcs-edu/app/controllers/comments_controller.rb	  def show
+show	/home/qaa12/web/vcs-edu/vcs-edu/app/controllers/students_controller.rb	  def show
 show	/home/qaa12/web/vcs-edu/vcs-edu/app/controllers/topics_controller.rb	  def show
 signup_notification	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/mailer.rb	  def signup_notification
 site_keys_file	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/authenticated_generator.rb	  def site_keys_file

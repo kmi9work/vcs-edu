@@ -2,7 +2,7 @@
 class SessionsController < ApplicationController  
   skip_before_filter :login_required
   # render new.rhtml
-  def new
+  def new    
   end
 
   def create

@@ -1,10 +1,9 @@
-1276905808
+1276997566
 ACCESS_CONTROL_AM_I_LOGGED_IN	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/access_control_spec.rb	ACCESS_CONTROL_AM_I_LOGGED_IN =
 ACCESS_CONTROL_FORMATS	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/access_control_spec.rb	ACCESS_CONTROL_FORMATS =
 ACCESS_CONTROL_IS_LOGIN_REQD	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/access_control_spec.rb	ACCESS_CONTROL_IS_LOGIN_REQD =
 AasmRoles	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authorization/aasm_roles.rb	  module AasmRoles
 AccessControlTestController	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/access_control_spec.rb	class AccessControlTestController 
-AddAnnotationAndThemeToTopics	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100306144432_add_annotation_and_theme_to_topics.rb	class AddAnnotationAndThemeToTopics 
 ApplicationController	/home/qaa12/web/vcs-edu/vcs-edu/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/qaa12/web/vcs-edu/vcs-edu/app/helpers/application_helper.rb	module ApplicationHelper
 AuthenticatedGenerator	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/authenticated_generator.rb	class AuthenticatedGenerator 
@@ -35,8 +34,9 @@ CommentsHelperTest	/home/qaa12/web/vcs-edu/vcs-edu/test/unit/helpers/comments_he
 ControllerClassMethods	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authentication/by_cookie_token.rb	    module ControllerClassMethods
 ControllerInstanceMethods	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authentication/by_cookie_token.rb	    module ControllerInstanceMethods
 CreateComments	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100302142112_create_comments.rb	class CreateComments 
+CreateMarks	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100619113522_create_marks.rb	class CreateMarks 
 CreateStudents	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100617145001_create_students.rb	class CreateStudents 
-CreateTopics	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100302141139_create_topics.rb	class CreateTopics 
+CreateTopics	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100612103959_create_topics.rb	class CreateTopics 
 CreateVotings	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100306211738_create_votings.rb	class CreateVotings 
 EmailValidation	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/trustification/email_validation.rb	  module EmailValidation
 FIXTURES_PATH	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/test/mailer_test.rb	  FIXTURES_PATH =
@@ -46,6 +46,8 @@ HomeControllerTest	/home/qaa12/web/vcs-edu/vcs-edu/test/functional/home_controll
 HomeHelper	/home/qaa12/web/vcs-edu/vcs-edu/app/helpers/home_helper.rb	module HomeHelper
 HomeHelperTest	/home/qaa12/web/vcs-edu/vcs-edu/test/unit/helpers/home_helper_test.rb	class HomeHelperTest 
 InstanceMethods	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/trustification/email_validation.rb	    module InstanceMethods
+Mark	/home/qaa12/web/vcs-edu/vcs-edu/app/models/mark.rb	class Mark 
+MarkTest	/home/qaa12/web/vcs-edu/vcs-edu/test/unit/mark_test.rb	class MarkTest 
 ModelClassMethods	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authentication.rb	  module ModelClassMethods
 ModelClassMethods	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authentication/by_cookie_token.rb	    module ModelClassMethods
 ModelClassMethods	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authentication/by_password.rb	    module ModelClassMethods
@@ -160,11 +162,11 @@ do_create	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/
 do_delete	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authorization/aasm_roles.rb	      def do_delete
 do_delete	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/lib/authorization/stateful_roles.rb	      def do_delete
 do_destroy	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/spec/controllers/sessions_controller_spec.rb	    def do_destroy
-down	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100302141139_create_topics.rb	  def self.down
 down	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100302142112_create_comments.rb	  def self.down
-down	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100306144432_add_annotation_and_theme_to_topics.rb	  def self.down
 down	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100306211738_create_votings.rb	  def self.down
+down	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100612103959_create_topics.rb	  def self.down
 down	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100617145001_create_students.rb	  def self.down
+down	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100619113522_create_marks.rb	  def self.down
 down	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/migration.rb	  def self.down
 dump_generator_attribute_names	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/authenticated_generator.rb	  def dump_generator_attribute_names
 dump_response	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/features/step_definitions/rest_auth_features_helper.rb	def dump_response
@@ -252,6 +254,7 @@ make_token	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication
 manifest	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/authenticated_generator.rb	  def manifest
 memorize_forget_all	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/features/step_definitions/ra_resource_steps.rb	def memorize_forget_all
 memorize_resource_value	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/features/step_definitions/ra_resource_steps.rb	def memorize_resource_value
+mmarks	/home/qaa12/web/vcs-edu/vcs-edu/app/models/student.rb	  attr_accessor :mmarks
 mock_	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/authenticated_test_helper.rb	  def mock_
 model_controller_file_name	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/authenticated_generator.rb	  alias_method  :model_controller_file_name
 model_controller_name	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/authenticated_generator.rb	  attr_reader   :model_controller_name,
@@ -391,11 +394,11 @@ test_suspended_	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentic
 to_array_from_story	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/features/step_definitions/rest_auth_features_helper.rb	  def to_array_from_story
 to_hash_from_story	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/features/step_definitions/rest_auth_features_helper.rb	  def to_hash_from_story
 unsuspend	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/model_controller.rb	  def unsuspend
-up	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100302141139_create_topics.rb	  def self.up
 up	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100302142112_create_comments.rb	  def self.up
-up	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100306144432_add_annotation_and_theme_to_topics.rb	  def self.up
 up	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100306211738_create_votings.rb	  def self.up
+up	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100612103959_create_topics.rb	  def self.up
 up	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100617145001_create_students.rb	  def self.up
+up	/home/qaa12/web/vcs-edu/vcs-edu/db/migrate/20100619113522_create_marks.rb	  def self.up
 up	/home/qaa12/web/vcs-edu/vcs-edu/vendor/plugins/restful-authentication/generators/authenticated/templates/migration.rb	  def self.up
 update	/home/qaa12/web/vcs-edu/vcs-edu/app/controllers/comments_controller.rb	  def update
 update	/home/qaa12/web/vcs-edu/vcs-edu/app/controllers/topics_controller.rb	  def update

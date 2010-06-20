@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100306211738) do
+ActiveRecord::Schema.define(:version => 20100617145001) do
 
   create_table "comments", :force => true do |t|
     t.integer  "topic_id"
@@ -22,16 +22,24 @@ ActiveRecord::Schema.define(:version => 20100306211738) do
   end
 
   create_table "students", :force => true do |t|
-    t.integer  "group"
-    t.string   "photo"
-    t.integer  "rating"
-    t.string   "first_name"
-    t.string   "second_name"
-    t.string   "last_name"
-    t.integer  "karma"
+    t.string   "login",                     :limit => 40
+    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "email",                     :limit => 100
+    t.string   "crypted_password",          :limit => 40
+    t.string   "salt",                      :limit => 40
+    t.string   "group",                     :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "photo"
+    t.integer  "rating",                                   :default => 0
+    t.string   "second_name",               :limit => 100
+    t.string   "last_name",                 :limit => 100
+    t.integer  "karma",                                    :default => 0
   end
+
+  add_index "students", ["login"], :name => "index_students_on_login", :unique => true
 
   create_table "topics", :force => true do |t|
     t.integer  "user_id"

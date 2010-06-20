@@ -29,6 +29,7 @@ class Student < ActiveRecord::Base
   attr_accessor :mmarks
   has_many :marks, :dependent => :delete_all
   has_many :topics
+  has_many :messages
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

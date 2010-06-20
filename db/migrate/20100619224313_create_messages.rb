@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.string :subject
       t.string :content
-      t.string :student_to
+      t.integer :student_id
       t.string :student_from
       t.boolean :new, :default => 1
       

@@ -9,14 +9,18 @@ class MessagesController < ApplicationController
   end
   
   def sent
+    student_to=Student.find_by_login(params[:message][:student_id])
     @message = Message.new(params[:message])
-    @message.student_from=@student.login    
+    @message.student_from=@student.login
+    @message.student_id=student_to.id
+    @message.student=student_to    
+    student_to.messages << @message
     respond_to do |format|
       if @message.save
         flash[:notice] = 'Сообщение для #{@student_to.login} отправленно.'
         format.html { redirect_to(:controller => :messages, :action => :list) }        
       else
-        @topic.comments.pop
+        student_to.messages.pop
         flash[:notice] = 'Сообщение не отправленно'
         format.html { render :action => "new" }
       end
@@ -24,7 +28,7 @@ class MessagesController < ApplicationController
   end
   
   def list
-    @messages = Message.find_all_by_student_to(@student.login)
+    @messages = @student.messages
     p @messages
     puts "============"
     respond_to do |format|

@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
-  
+  # filter_parameter_logging :password  
   def stud
     @student = current_student
   end
 
   def new_message
-    @msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size
+    #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
+    @new_msg=@student.messages.collect{|p| p.new}.select{|x| x==true}.size    
   end
   
 end

@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
   
   def show
     @student_show=Student.find_by_id(params[:id])
+    @new_msg=@student.messages.collect{|p| p.new}.select{|x| x==true}.size 
   end
   
 end

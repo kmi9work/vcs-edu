@@ -1,18 +1,13 @@
-<p>
-  <b>User:</b>
-  <%= h @topic.user_id %>
-</p>
 
-<%if @topic.voting_id%>
+<%if nil and @topic.voting %>
 <p>
   <b>Voting:</b>
-  <%= h @topic.voting_id %>
+  <%= h @topic.voting %>
 </p>
 <% end %>
 
 <p>
-  <b>Content:</b>
-  <%= h @topic.content %>
+  <%= textilize( h @topic.content) %>
 </p>
 
 <p>
@@ -20,13 +15,27 @@
   <%= h @topic.rating %>
 </p>
 
+<div class = "under_topic">
+  Автор: <%= h @topic.student.login %>
+  <% if @topic.student.rating %>
+  (<font color="<%= 
+  if @topic.student.rating > 0
+    "green"
+  elsif @topic.student.rating == 0
+    "gray"
+  else
+    "red"
+  end
+  %>"><%= @topic.student.rating %></font>)
+  <% end %>
+</p>
+</div>
 <br>
-<hr>
 <p>
 	<%= render :partial => 'comments' %>
-	<%= @topic.comments.size %>
 
 </p>
 
-<%= link_to 'New', :controller => :comments, :action => :new, :topic_id => @topic.id %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id %> |
+<%= link_to 'Назад', topics_path %>
+

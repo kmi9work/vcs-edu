@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100617145001) do
+ActiveRecord::Schema.define(:version => 20100619113522) do
 
   create_table "comments", :force => true do |t|
     t.integer  "topic_id"
@@ -17,6 +17,13 @@ ActiveRecord::Schema.define(:version => 20100617145001) do
     t.integer  "user_id"
     t.text     "content"
     t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "marks", :force => true do |t|
+    t.string   "subject"
+    t.integer  "mark"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,10 +53,10 @@ ActiveRecord::Schema.define(:version => 20100617145001) do
     t.integer  "voting_id"
     t.text     "content"
     t.integer  "rating"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "theme"
     t.text     "annotation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "votings", :force => true do |t|

@@ -1,0 +1,9 @@
+<% if @student.login!=@message.student_to %>
+  Нехорошо
+  <% else %>
+Тема: <%= h @message.subject %>
+Отправитель: <%= h @message.student_from%>
+Содержание: <%= h @message.content%> 
+Отправлено: <%= h @message.created_at+3600*4%>
+  <br>
+  <% end %>

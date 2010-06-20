@@ -2,7 +2,6 @@
   <div id="student-bar-greeting"><%= link_to_current_student :content_method => :login %></div>
   <div id="student-bar-greeting"><%= @student[:name]%> <%= @student[:second_name]%> </div>
   <div id="student-bar-greeting"><%= @student[:last_name]%> </div>
-  <div id="student-bar-greeting">Группа <%= @student[:group]%> </div>
   <div id="student-bar-greeting">Рейтинг <%= @student[:rating]%></div>
   <div id="student-bar-action"  >(<%= link_to "Выйти", logout_path, { :title => "Log out" }    %>)</div>
 <% else -%>

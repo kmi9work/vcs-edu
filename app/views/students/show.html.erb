@@ -1,4 +1,4 @@
-<div style="text-align: center;"><%= image_tag(@student[:image] ? @student[:image] : "noavatar.gif", :width => 100, :height => 100)%></div>
-  <div id="student-bar-greeting"><%= @student[:name]%> <%= @student[:second_name]%> </div>
-  <div id="student-bar-greeting"><%= @student[:last_name]%> </div>
-  <div id="student-bar-greeting">Группа <%= @student[:group]%> </div>
+<div style="text-align: center;"><%= image_tag(@student_show[:image] ? @student_show[:image] : "noavatar.gif", :width => 100, :height => 100)%></div>
+  <div id="student-bar-greeting"><%= @student_show[:name]%> <%= @student_show[:second_name]%> </div>
+  <div id="student-bar-greeting"><%= @student_show[:last_name]%> </div>
+  <div id="student-bar-greeting">Группа <%= @student_show[:group]%> </div>

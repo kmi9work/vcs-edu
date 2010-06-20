@@ -141,3 +141,13 @@ img.middle{
   border: 3px solid #888;
   border-radius: 13px;
 }
+
+.message_list_new{
+  width: 100%;
+  background-color: #FF9999;
+}
+
+.message_list{
+  width: 100%;
+  background-color: #BBB;
+}

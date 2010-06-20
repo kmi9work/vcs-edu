@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100619113522) do
+ActiveRecord::Schema.define(:version => 20100619224313) do
 
   create_table "comments", :force => true do |t|
     t.integer  "topic_id"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(:version => 20100619113522) do
   create_table "marks", :force => true do |t|
     t.string   "subject"
     t.integer  "mark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "subject"
+    t.string   "content"
+    t.string   "student_to"
+    t.string   "student_from"
+    t.boolean  "new",          :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

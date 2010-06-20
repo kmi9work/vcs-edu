@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  skip_before_filter :login_required  
+  skip_before_filter :login_required, :new_message
   
 
   # render new.rhtml
@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
   end
   
   def show
-    @student=Student.find_by_id(params[:id])
+    @student_show=Student.find_by_id(params[:id])
   end
   
 end

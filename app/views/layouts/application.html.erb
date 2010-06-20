@@ -19,8 +19,7 @@
 			<div class="inline" id="top_center">
         <div class="inline" id="fio">
            <%= render :partial => 'students/student_bar' %>
-					<br>
-					<font color="blue">5<%= @student[:msg_count]%></font> Сообщений
+          <%= link_to 'ЛС', :controller => :messages, :action => :list %> Новых: <%= @msg_count %>
 				</div>
 				<div class="inline" id="marks">
 					<table>

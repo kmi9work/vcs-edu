@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  before_filter :login_required, :stud
+  before_filter :login_required, :stud, :new_message
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     @student = current_student
   end
 
+  def new_message
+    @msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size
+  end
+  
 end

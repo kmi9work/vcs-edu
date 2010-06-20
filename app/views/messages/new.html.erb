@@ -1,0 +1,19 @@
+<% form_for(@message, :url => {:action=> :sent})  do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label 'Кому' %><br />
+    <%= f.text_area :student_to %>
+  </p>
+  
+  <p>
+    <%= f.label 'Тема' %><br />
+    <%= f.text_area :subject %>
+  </p>
+  <p>
+    <%= f.label 'Содержание' %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>

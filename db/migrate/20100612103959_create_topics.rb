@@ -1,8 +1,7 @@
 class CreateTopics < ActiveRecord::Migration
   def self.up
     create_table :topics do |t|
-      t.integer :user_id
-      t.integer :voting_id
+      t.integer :student_id
       t.text :content
       t.integer :rating
       t.string :theme

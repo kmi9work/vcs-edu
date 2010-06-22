@@ -35,21 +35,38 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
+    comment = @comment
+    while !comment.topic
+      comment = comment.comment
+    end
+    @topic = comment.topic
   end
 
   # POST /comments
   # POST /comments.xml
   def create
-    @topic = Topic.find(params[:topic_id])
     @comment = Comment.new(params[:comment])
-    @topic.comments << @comment
+    @comment.student = @student
+    topic = Topic.find(params[:topic_id])
+    if params[:comment_id]
+      comment = Comment.find(params[:comment_id])
+      comment.comments << @comment
+      @comment.comment = comment
+    else
+      @comment.topic = topic
+      topic.comments << @comment
+    end
     respond_to do |format|
       if @comment.save
         flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(:controller => :topics, :action => :show, :id => @topic.id) }
+        format.html { redirect_to topic }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
-        @topic.comments.pop
+        if params[:comment_id]
+          comment.comments.pop
+        else
+          topic.comments.pop
+        end
         flash[:notice] = 'Error.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
@@ -61,11 +78,15 @@ class CommentsController < ApplicationController
   # PUT /comments/1.xml
   def update
     @comment = Comment.find(params[:id])
-    @topics = @comment.topic
+    comment = @comment
+    while !comment.topic
+      comment = comment.comment
+    end
+    topic = comment.topic 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         flash[:notice] = 'Comment was successfully updated.'
-        format.html { redirect_to(@topics) }
+        format.html { redirect_to(topic) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,10 +99,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.xml
   def destroy
     @comment = Comment.find(params[:id])
+    topic = @comment.topic
     @comment.destroy
     
     respond_to do |format|
-      format.html { redirect_to(@topic) }
+      format.html { redirect_to :back }
       format.xml  { head :ok }
     end
   end

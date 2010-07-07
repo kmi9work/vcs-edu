@@ -10,7 +10,7 @@
 		<div id="head">
 			<div class="inline" id="avatar">
 				<div id="top">
-					<%= image_tag(@student[:image] ? @student[:image] : "noavatar.gif", :width => 100, :height => 100)%>
+					<%= image_tag(@student.avatar ? @student.avatar.url : "noavatar.gif", :width => 100, :height => 100)%>
 				</div>
         <div id="bottom">
 					<%= image_tag("karma_ruby.png")%> <%= @student[:karma]%>

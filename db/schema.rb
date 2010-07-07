@@ -9,12 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100619224313) do
+ActiveRecord::Schema.define(:version => 20100628114613) do
 
   create_table "comments", :force => true do |t|
     t.integer  "topic_id"
+    t.integer  "student_id"
     t.integer  "comment_id"
-    t.integer  "user_id"
     t.text     "content"
     t.integer  "rating"
     t.datetime "created_at"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20100619224313) do
   end
 
   create_table "marks", :force => true do |t|
+    t.integer  "student_id"
     t.string   "subject"
     t.integer  "mark"
     t.datetime "created_at"
@@ -54,13 +55,16 @@ ActiveRecord::Schema.define(:version => 20100619224313) do
     t.string   "second_name",               :limit => 100
     t.string   "last_name",                 :limit => 100
     t.integer  "karma",                                    :default => 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true
 
   create_table "topics", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "voting_id"
+    t.integer  "student_id"
     t.text     "content"
     t.integer  "rating"
     t.string   "theme"

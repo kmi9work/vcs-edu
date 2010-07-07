@@ -1,7 +1,9 @@
 class Comment < ActiveRecord::Base
-  belongs_to :topic, :foreign_key => :topic_id
+  belongs_to :topic
   
-  belongs_to :user, :foreign_key => :user_id
+  belongs_to :student
+  
+  belongs_to :comment
     
-  has_many :comments, :foreign_key => :comment_id
+  has_many :comments, :dependent => :delete_all
 end

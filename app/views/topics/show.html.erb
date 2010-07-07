@@ -32,7 +32,8 @@
 </div>
 <br>
 <p>
-	<%= render :partial => 'comments' %>
+  <% depth = 0 %>
+	<%= render (:partial => 'comment', :collection => @topic.comments, :locals => {:depth => depth}) if @topic.comments and @topic.comments.size > 0 %>
 
 </p>
 

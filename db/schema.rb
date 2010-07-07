@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100619113522) do
+ActiveRecord::Schema.define(:version => 20100628114613) do
 
   create_table "comments", :force => true do |t|
     t.integer  "topic_id"
@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(:version => 20100619113522) do
     t.string   "second_name",               :limit => 100
     t.string   "last_name",                 :limit => 100
     t.integer  "karma",                                    :default => 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true

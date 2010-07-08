@@ -34,12 +34,16 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    @comment = Comment.find(params[:id])
-    comment = @comment
-    while !comment.topic
-      comment = comment.comment
+    if @student.admin
+      @comment = Comment.find(params[:id])
+      comment = @comment
+      while !comment.topic
+        comment = comment.comment
+      end
+      @topic = comment.topic
+    else
+      redirect_to :back or render :status => 403
     end
-    @topic = comment.topic
   end
 
   # POST /comments
@@ -77,34 +81,42 @@ class CommentsController < ApplicationController
   # PUT /comments/1
   # PUT /comments/1.xml
   def update
-    @comment = Comment.find(params[:id])
-    comment = @comment
-    while !comment.topic
-      comment = comment.comment
-    end
-    topic = comment.topic 
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        flash[:notice] = 'Comment was successfully updated.'
-        format.html { redirect_to(topic) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+    if @student.admin
+      @comment = Comment.find(params[:id])
+      comment = @comment
+      while !comment.topic
+        comment = comment.comment
       end
+      topic = comment.topic 
+      respond_to do |format|
+        if @comment.update_attributes(params[:comment])
+          flash[:notice] = 'Comment was successfully updated.'
+          format.html { redirect_to(topic) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        end
+      end
+    else
+      redirect_to :back or render :status => 403
     end
   end
 
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
-    @comment = Comment.find(params[:id])
-    topic = @comment.topic
-    @comment.destroy
+    if @student.admin
+      @comment = Comment.find(params[:id])
+      topic = @comment.topic
+      @comment.destroy
     
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.xml  { head :ok }
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.xml  { head :ok }
+      end
+    else
+      redirect_to :back or render :status => 403
     end
   end
 end

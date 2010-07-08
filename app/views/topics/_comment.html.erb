@@ -3,12 +3,11 @@
   <div class="comment content" style="background: #fd3;">
   <%= h comment.student.login %>:
 	<%= h comment.content %> <br>
-	---<br>
-	<%= h comment.topic %>
-	---<br>
 	</div>
-  <%= link_to 'Edit', :controller => :comments, :action => :edit, :id => comment.id %> |
-	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id, :confirm => 'Are you sure?', :method => :delete %><br>
+	<% if @student.admin or comment.student.id == @student.id %>
+    <%= link_to 'Edit', :controller => :comments, :action => :edit, :id => comment.id %> |
+  	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id, :confirm => 'Are you sure?', :method => :delete %><br>
+	<% end %>
 	<%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id, :comment_id => comment.id %>
   <hr>
 </div>

@@ -35,6 +35,9 @@ class TopicsController < ApplicationController
   # GET /topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
+    unless @student.admin or @student.id == @topic.student.id
+      redirect_to :back or render :status => 403
+    end
   end
 
   # POST /topics
@@ -60,16 +63,19 @@ class TopicsController < ApplicationController
   # PUT /topics/1.xml
   def update
     @topic = Topic.find(params[:id])
-
-    respond_to do |format|
-      if @topic.update_attributes(params[:topic])
-        flash[:notice] = 'Topic was successfully updated.'
-        format.html { redirect_to(@topic) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
+    if @student.admin or @student.id == @topic.student.id
+      respond_to do |format|
+        if @topic.update_attributes(params[:topic])
+          flash[:notice] = 'Topic was successfully updated.'
+          format.html { redirect_to(@topic) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to :back or render :status => 403
     end
   end
 
@@ -77,11 +83,58 @@ class TopicsController < ApplicationController
   # DELETE /topics/1.xml
   def destroy
     @topic = Topic.find(params[:id])
-    @topic.destroy
+    if @student.admin or @student.id == @topic.student.id
+      @topic.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(topics_url) }
-      format.xml  { head :ok }
+      respond_to do |format|
+        format.html { redirect_to(topics_url) }
+        format.xml  { head :ok }
+      end
+    else
+      redirect_to :back or render :status => 403
+    end
+  end
+  
+  def plus
+    respond_to do |wants|
+      wants.js do 
+        topic = Topic.find(params[:id])
+        topic[:rating] +=1
+        topic.save
+        render :text => topic[:rating].to_s
+      end
+      wants.html do
+        topic = Topic.find(params[:id])
+        topic[:rating] +=1
+        topic.save
+        render :refresh
+      end
+    end
+  end
+  
+  def minus
+    respond_to do |wants|
+      wants.js do 
+        topic = Topic.find(params[:id])
+        topic[:rating] -=1
+        topic.save
+        render :text => topic[:rating].to_s
+      end
+      wants.html do
+        topic = Topic.find(params[:id])
+        topic[:rating] -=1
+        topic.save
+        render :refresh
+      end
     end
   end
 end
+
+
+
+
+
+
+
+
+

@@ -12,8 +12,15 @@
 
 <p>
   <b>Рейтинг:</b>
-  <%= h @topic.rating %>
+  <span id="topic_rating"><%= h @topic.rating %></span> | 
+  <div class="plus"><%= link_to_remote image_tag("up.png"), 
+                          :update => "topic_rating", 
+                          :url => {:action => :plus, :id => @topic.id}%></div> 
+  <div class="plus"><%= link_to_remote image_tag("down.png"), 
+                          :update => "topic_rating", 
+                          :url => {:action => :minus, :id => @topic.id}%></div>
 </p>
+  
 
 <div class = "under_topic">
   Автор: <%= h @topic.student.login %>

@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def new
-    @message=Message.new
+    @message = Message.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -8,16 +8,16 @@ class MessagesController < ApplicationController
     end
   end
   
-  def sent
-    student_to=Student.find_by_login(params[:message][:student_id])
+  def send
+    student_to = Student.find_by_login(params[:message][:student_id])
     @message = Message.new(params[:message])
-    @message.student_from=@student.login
-    @message.student_id=student_to.id
-    @message.student=student_to    
+    @message.student_from = @student.login
+    @message.student_id = student_to.id
+    @message.student = student_to
     student_to.messages << @message
     respond_to do |format|
       if @message.save
-        flash[:notice] = 'Сообщение для #{@student_to.login} отправленно.'
+        flash[:notice] = "Сообщение для #{@student_to.login} отправленно."
         format.html { redirect_to(:controller => :messages, :action => :list) }        
       else
         student_to.messages.pop
@@ -29,8 +29,6 @@ class MessagesController < ApplicationController
   
   def list
     @messages = @student.messages
-    p @messages
-    puts "============"
     respond_to do |format|
       format.html # list.html.erb      
     end
@@ -38,7 +36,7 @@ class MessagesController < ApplicationController
   
   def show
     @message = Message.find_by_id(params[:message_id])
-    @message.new=0
+    @message.new = 0
     @message.save
   end
   

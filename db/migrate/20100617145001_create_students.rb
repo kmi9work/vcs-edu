@@ -16,6 +16,8 @@ class CreateStudents < ActiveRecord::Migration
       t.string :second_name, :limit => 100
       t.string :last_name, :limit => 100
       t.integer :karma, :default => 0
+      t.boolean :admin, :default => false
+      t.boolean :headman, :default => false
     end
     add_index :students, :login, :unique => true
   end

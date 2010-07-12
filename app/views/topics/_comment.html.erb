@@ -1,10 +1,9 @@
 <hr>
 <div class="comment", style="margin-left: <%= depth %>px">
   <div class="comment content" style="background: #fd3;">
-  <%= h comment.student.login %>:
-	<%= h comment.content %> <br>
+  <b><%= h comment.student.login %></b>: <%= textilize (h comment.content) %> <br>
 	</div>
-	<% if @student.admin or comment.student.id == @student.id %>
+	<% if @student.admin %>
     <%= link_to 'Edit', :controller => :comments, :action => :edit, :id => comment.id %> |
   	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id, :confirm => 'Are you sure?', :method => :delete %><br>
 	<% end %>

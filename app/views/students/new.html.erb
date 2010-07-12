@@ -31,6 +31,12 @@
   
   <p><%= label_tag 'Аватар' %><br/>
   <%= f.file_field :avatar %>
+  
+  <p><%= label_tag 'Админ?' %><br/>
+  <%= f.check_box :admin %>
+  
+  <p><%= label_tag 'Староста?' %><br/>
+  <%= f.check_box :headman %>
 
   <p><%= submit_tag 'Sign up' %></p>
 <% end -%>

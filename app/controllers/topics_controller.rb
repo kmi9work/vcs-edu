@@ -99,9 +99,20 @@ class TopicsController < ApplicationController
     respond_to do |wants|
       wants.js do 
         topic = Topic.find(params[:id])
-        topic[:rating] +=1
-        topic.save
-        render :text => topic[:rating].to_s
+        if topic_rating_student = TopicRatingStudent.find(:first, :conditions => {:topic_id => topic.id, :student_id => @student.id})
+          topic_rating_student.mark += 1
+          topic_rating_student.save
+          render :text => topic[:rating].to_s
+        else
+          topic_rating_student = TopicRatingStudent.new
+          topic[:rating] +=1
+          topic_rating_student.mark = 1
+          topic.topic_rating_students << topic_rating_student
+          topic.save
+          @student.topic_rating_students << topic_rating_student
+          @student.save
+          render :text => topic[:rating].to_s
+        end
       end
       wants.html do
         topic = Topic.find(params[:id])
@@ -116,9 +127,20 @@ class TopicsController < ApplicationController
     respond_to do |wants|
       wants.js do 
         topic = Topic.find(params[:id])
-        topic[:rating] -=1
-        topic.save
-        render :text => topic[:rating].to_s
+        if topic_rating_student = TopicRatingStudent.find(:first, :conditions => {:topic_id => topic.id, :student_id => @student.id})
+          topic_rating_student.mark -= 1
+          topic_rating_student.save
+          render :text => topic[:rating].to_s
+        else
+          topic_rating_student = TopicRatingStudent.new
+          topic[:rating] -=1
+          topic_rating_student.mark = -1
+          topic.topic_rating_students << topic_rating_student
+          topic.save
+          @student.topic_rating_students << topic_rating_student
+          @student.save
+          render :text => topic[:rating].to_s
+        end
       end
       wants.html do
         topic = Topic.find(params[:id])
@@ -128,6 +150,12 @@ class TopicsController < ApplicationController
       end
     end
   end
+  def topic_raters
+    topic = Topic.find(params[:id])
+    @topic_raters = topic.topic_rating_students
+    render :template => 'topics/topic_raters', :layout => false
+  end
+  
 end
 
 

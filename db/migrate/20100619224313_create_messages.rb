@@ -1,10 +1,10 @@
 class CreateMessages < ActiveRecord::Migration
   def self.up
     create_table :messages do |t|
-      t.string :subject
+      t.string :title
       t.string :content
       t.integer :student_id
-      t.string :student_from
+      t.integer :student_from_id
       t.boolean :new, :default => 1
       
       t.timestamps

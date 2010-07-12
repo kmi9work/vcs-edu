@@ -49,31 +49,38 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Comment.new(params[:comment])
-    @comment.student = @student
     topic = Topic.find(params[:topic_id])
-    if params[:comment_id]
-      comment = Comment.find(params[:comment_id])
-      comment.comments << @comment
-      @comment.comment = comment
+    @comment = Comment.new(params[:comment])
+    unless @comment.content.empty?
+      @comment.student = @student
+      if params[:comment_id]
+        comment = Comment.find(params[:comment_id])
+        comment.comments << @comment
+        @comment.comment = comment
+      else
+        @comment.topic = topic
+        topic.comments << @comment
+      end
+      respond_to do |format|
+        if @comment.save
+          flash[:notice] = 'Comment was successfully created.'
+          format.html { redirect_to topic }
+          format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+        else
+          if params[:comment_id]
+            comment.comments.pop
+          else
+            topic.comments.pop
+          end
+          flash[:notice] = 'Error.'
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        end
+      end
     else
-      @comment.topic = topic
-      topic.comments << @comment
-    end
-    respond_to do |format|
-      if @comment.save
-        flash[:notice] = 'Comment was successfully created.'
+      respond_to do |format|
         format.html { redirect_to topic }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-      else
-        if params[:comment_id]
-          comment.comments.pop
-        else
-          topic.comments.pop
-        end
-        flash[:notice] = 'Error.'
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end

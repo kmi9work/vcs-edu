@@ -7,16 +7,16 @@ class MessagesController < ApplicationController
       format.xml  { render :xml => @comment }
     end
   end
-  
-  def send
+
+  def sent
     student_to = Student.find_by_login(params[:message][:student_id])
     @message = Message.new(params[:message])
-    @message.student_from = @student.login
-    @message.student_id = student_to.id
+    @message.student_from = @student
     @message.student = student_to
     student_to.messages << @message
+    @student.messages << @message
     respond_to do |format|
-      if @message.save
+      if @message.save and @student.save and student_to.save
         flash[:notice] = "Сообщение для #{@student_to.login} отправленно."
         format.html { redirect_to(:controller => :messages, :action => :list) }        
       else
@@ -26,18 +26,18 @@ class MessagesController < ApplicationController
       end
     end
   end
-  
-  def list
+
+  def index
     @messages = @student.messages
     respond_to do |format|
       format.html # list.html.erb      
     end
   end
-  
+
   def show
     @message = Message.find_by_id(params[:message_id])
     @message.new = 0
     @message.save
   end
-  
+
 end

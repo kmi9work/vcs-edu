@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20100708111311) do
     t.integer  "student_id"
     t.text     "content"
     t.integer  "rating"
-    t.string   "theme"
+    t.string   "title"
     t.text     "annotation"
     t.datetime "created_at"
     t.datetime "updated_at"

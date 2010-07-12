@@ -4,7 +4,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :student_id
       t.text :content
       t.integer :rating
-      t.string :theme
+      t.string :title
       t.text :annotation
       t.integer :section_id
       

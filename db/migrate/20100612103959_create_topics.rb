@@ -6,6 +6,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :rating
       t.string :theme
       t.text :annotation
+      t.integer :section_id
       
       t.timestamps
     end

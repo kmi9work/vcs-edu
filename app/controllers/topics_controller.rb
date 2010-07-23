@@ -156,6 +156,11 @@ class TopicsController < ApplicationController
     render :template => 'topics/topic_raters', :layout => false
   end
   
+  def sections
+    @sections = Section.find(:all)
+  end
+  
+  
 end
 
 

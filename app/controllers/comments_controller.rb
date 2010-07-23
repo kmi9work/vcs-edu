@@ -3,22 +3,9 @@ class CommentsController < ApplicationController
   # GET /comments.xml
   def list
     @comments = Comment.find_all_by_topic_id(params[:topic_ix])
-    p @comments
-    puts "============"
     respond_to do |format|
       format.html # list.html.erb
       format.xml  { render :xml => @comments }
-    end
-  end
-
-  # GET /comments/1
-  # GET /comments/1.xml
-  def show
-    @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @topics }
     end
   end
 

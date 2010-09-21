@@ -16,6 +16,7 @@
 
 textilize http://en.wikipedia.org/wiki/Textile_(markup_language)
 http://info.michael-simons.eu/2007/08/06/rails-respond_to-method/
+http://atata.com/shouts/288760
 render partial collection
 render partial object
 
